@@ -3,7 +3,7 @@ class UsersController < ApiController
 
   def create
     user = User.create!(user_params)
-    render json: { token: auth_token }
+    render json: { token: user.auth_token }
   end
 
   def profile
@@ -14,7 +14,7 @@ class UsersController < ApiController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :name)
+    params.require(:user).permit(:username, :password, :email, :name)
   end
 
 end

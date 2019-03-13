@@ -12,7 +12,7 @@ class ApiController < ApplicationController
 
   def render_unauthorized(message)
     errors = { errors: [ detail: message ] }
-    render json: errors, status: unauthorized
+    render json: errors, status: :unauthorized
   end
 
 private
