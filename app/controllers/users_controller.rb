@@ -10,7 +10,7 @@ class UsersController < ApiController
     user = User.find_by_auth_token!(request.headers[:token])
     user_monsters = Monster.where(user_id: user.id)
     render json: {
-      user: { username: user.username, email: user.email, name: user.name },
+      user: { username: user.username, email: user.email, name: user.name, id: user.id },
       monsters: user_monsters
     }
   end
