@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_13_011356) do
+ActiveRecord::Schema.define(version: 2019_03_18_195309) do
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.string "brand_name"
+    t.integer "serving_qty"
+    t.string "serving_unit"
+    t.float "serving_weight_grams"
+    t.float "calories"
+    t.float "total_fat"
+    t.float "saturated_fat"
+    t.float "cholesterol"
+    t.float "sodium"
+    t.float "total_carbohydrate"
+    t.float "dietary_fiber"
+    t.float "sugars"
+    t.float "protein"
+    t.float "potassium"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "monsters", force: :cascade do |t|
     t.string "name"
@@ -19,6 +39,11 @@ ActiveRecord::Schema.define(version: 2019_03_13_011356) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_monsters_on_user_id"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
   end
 
   create_table "users", force: :cascade do |t|
