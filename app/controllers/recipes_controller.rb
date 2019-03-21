@@ -1,4 +1,5 @@
 class RecipesController < ApiController
+  before_action :require_login, except: [:index, :show]
 
   def index
     recipes = Recipes.all
