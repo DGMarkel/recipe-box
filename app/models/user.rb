@@ -2,7 +2,6 @@ class User < ApplicationRecord
   validates_uniqueness_of :username
   has_secure_password
   has_secure_token :auth_token
-  has_many :monsters
   has_many :recipes
 
   def invalidate_token
