@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
   get '/profile' => 'users#profile'
   post '/recipes' => 'recipes#create'
-  resources :monsters
   resources :users
 
 end
