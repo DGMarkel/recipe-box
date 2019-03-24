@@ -12,12 +12,13 @@ class RecipesController < ApiController
   end
 
   def create
-    recipe = Recipe.new(recipe_params)
+    recipe = Recipe.new(title: recipe_params[:title])
     recipe.user = current_user
     if recipe.save
+      recipe.ingredients.create("name": params[:recipe][:ingredients][0][:name])
       render json: {
-        message: 'ok',
-        recipe: recipe
+      message: 'ok',
+      recipe: recipe
       }
     else
       render json: {
@@ -29,7 +30,7 @@ class RecipesController < ApiController
   private
 
     def recipe_params
-      params.require(:recipe).permit(:title, :description)
+      params.require(:recipe).permit(:title, ingredients: [:name])
     end
 
 end
