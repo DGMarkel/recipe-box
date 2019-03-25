@@ -3,12 +3,12 @@ class RecipesController < ApiController
 
   def index
     recipes = Recipe.all
-    render json: { recipes: recipes }
+    render json: recipes
   end
 
   def show
     recipe = Recipe.find(params[:id])
-    render json: { recipe: recipe }
+    render json: recipe
   end
 
   def create
