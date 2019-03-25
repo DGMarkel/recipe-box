@@ -9,10 +9,7 @@ class UsersController < ApiController
   def profile
     user = User.find_by_auth_token!(request.headers[:token])
     user_recipes = Recipe.where(user_id: user.id)
-    render json: {
-      user: { username: user.username, email: user.email, name: user.name, id: user.id },
-      recipes: user_recipes
-    }
+    render json: user, include: '**'
   end
 
   private
