@@ -15,7 +15,7 @@ class RecipesController < ApiController
     recipe = Recipe.new(title: recipe_params[:title])
     recipe.user = current_user
     if recipe.save
-      recipe.ingredients.create("name": params[:recipe][:ingredients][0][:name])
+      recipe.ingredients.create(recipe_params[:ingredients])
       render json: {
       message: 'ok',
       recipe: recipe
@@ -30,7 +30,24 @@ class RecipesController < ApiController
   private
 
     def recipe_params
-      params.require(:recipe).permit(:title, ingredients: [:name])
+      params.require(:recipe).permit(
+        :title,
+        ingredients: [
+          :name,
+          :serving_qty,
+          :serving_unit,
+          :calories,
+          :total_fat,
+          :saturated_fat,
+          :cholesterol,
+          :sodium,
+          :total_carbohydrate,
+          :dietary_fiber,
+          :sugars,
+          :protein,
+          :potassium
+        ]
+      )
     end
 
 end
