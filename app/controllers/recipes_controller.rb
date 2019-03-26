@@ -33,7 +33,7 @@ class RecipesController < ApiController
       params.require(:recipe).permit(
         :title,
         ingredients: [
-          :name,
+          :food_name,
           :serving_qty,
           :serving_unit,
           :calories,
