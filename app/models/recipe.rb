@@ -5,13 +5,15 @@ class Recipe < ApplicationRecord
 
   def nutritional_data_points
     data_points = ingredients.first.attributes.map { |k, v| k }
-    data_points - ["id", "food_name", "brand_name", "serving_qty", "serving_unit", "serving_weight_grams", "created_at", "updated_at"]
+    data_points - ["id", "recipe_id", "food_name", "brand_name", "serving_qty", "serving_unit", "serving_weight_grams", "created_at", "updated_at"]
   end
 
   def recipe_totals
+    recipe_totals = Hash.new
     nutritional_data_points.map do |data_point|
-      ingredients.sum(&:"#{data_point}")
+      recipe_totals[:"#{data_point}"] = ingredients.sum(&:"#{data_point}")
     end
+    recipe_totals
   end
 
 end
