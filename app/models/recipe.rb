@@ -10,8 +10,8 @@ class Recipe < ApplicationRecord
 
   def recipe_totals
     recipe_totals = Hash.new
-    nutritional_data_points.map do |data_point|
-      recipe_totals[:"#{data_point}"] = ingredients.sum(&:"#{data_point}")
+    nutritional_data_points.each do |data_point|
+      recipe_totals[:"#{data_point}"] = ingredients.map(&:"#{data_point}").compact.sum
     end
     recipe_totals
   end
