@@ -1,6 +1,7 @@
 class Recipe < ApplicationRecord
   belongs_to :user
   has_many :ingredients
+  has_one :image
   validates_uniqueness_of :title
 
   def nutritional_data_points
