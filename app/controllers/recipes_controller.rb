@@ -12,7 +12,7 @@ class RecipesController < ApiController
   end
 
   def create
-    recipe = Recipe.new(title: recipe_params[:title], description: recipe_params[:description], image: recipe_params[:image])
+    recipe = Recipe.new(title: recipe_params[:title], description: recipe_params[:description], image_url: recipe_params[:image_url])
     recipe.user = current_user
     if recipe.save
       recipe.ingredients.create(recipe_params[:ingredients])
@@ -33,7 +33,7 @@ class RecipesController < ApiController
       params.require(:recipe).permit(
         :title,
         :description,
-        :image,
+        :image_url,
         ingredients: [
           :food_name,
           :serving_qty,
