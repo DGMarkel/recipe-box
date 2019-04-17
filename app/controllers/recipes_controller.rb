@@ -28,7 +28,7 @@ class RecipesController < ApiController
   end
 
   def edit
-    recipe = Recipe.find_by(recipe_params[:id])
+    recipe = Recipe.find_by(title: recipe_params[:title])
     if recipe.update(recipe_params)
       render json: {
       message: 'ok',
@@ -45,7 +45,6 @@ class RecipesController < ApiController
 
     def recipe_params
       params.require(:recipe).permit(
-        :id,
         :title,
         :description,
         :image_url,
