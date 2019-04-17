@@ -29,7 +29,7 @@ class RecipesController < ApiController
 
   def update
     recipe = Recipe.find_by(title: recipe_params[:title])
-    if recipe.update(recipe_params)
+    if recipe.update(recipe_params.to_h)
       render json: {
       message: 'ok',
       recipe: recipe
