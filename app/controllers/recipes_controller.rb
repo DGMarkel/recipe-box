@@ -28,8 +28,8 @@ class RecipesController < ApiController
   end
 
   def update
-    recipe = Recipe.find_by(title: recipe_params[:title])
-    if recipe.update(recipe_params.to_h)
+    recipe = Recipe.find(recipe_params[:id])
+    if recipe.update(title: recipe_params[:title], description: recipe_params[:description], image_url: recipe_params[:image_url])
       render json: {
       message: 'ok',
       recipe: recipe
@@ -45,6 +45,7 @@ class RecipesController < ApiController
 
     def recipe_params
       params.require(:recipe).permit(
+        :id,
         :title,
         :description,
         :image_url,
