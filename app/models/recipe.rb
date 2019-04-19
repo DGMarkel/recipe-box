@@ -4,6 +4,10 @@ class Recipe < ApplicationRecord
   validates_uniqueness_of :title
   accepts_nested_attributes_for :ingredients, allow_destroy: true
 
+  def creator_name
+    user.name
+  end
+
   def nutritional_data_points
     data_points = ingredients.first.attributes.map { |k, v| k }
     data_points - ["id", "recipe_id", "food_name", "brand_name", "serving_qty", "serving_unit", "serving_weight_grams", "created_at", "updated_at"]
