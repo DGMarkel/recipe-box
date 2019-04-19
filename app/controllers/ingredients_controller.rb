@@ -1,10 +1,10 @@
 class IngredientsController < ApiController
   before_action :require_login
 
-  def update
+  def destroy
     ingredient_params[:ingredients].each do |ingredient|
-      updatedIngredient = Ingredient.find_by(food_name: ingredient[:food_name], recipe_id: ingredient_params[:id])
-      updatedIngredient.update(ingredient)
+      ingredient = Ingredient.find_by(food_name: ingredient[:food_name], recipe_id: ingredient_params[:id])
+      ingredient.destroy
     end
   end
 

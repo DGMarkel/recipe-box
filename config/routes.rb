@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/profile' => 'users#profile'
   post '/recipes' => 'recipes#create'
   patch '/edit' => 'recipes#update'
-  patch '/edit-ingredients' => 'ingredients#update'
+  delete '/delete' => 'ingredients#update'
   resources :users
 
 end
