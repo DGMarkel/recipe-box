@@ -10,7 +10,6 @@ class IngredientsController < ApiController
 
     def ingredient_params
       params.require(:ingredient).permit(
-        :id,
         :ingredient_data => {}
       )
     end
