@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
   get '/profile' => 'users#profile'
   post '/recipes' => 'recipes#create'
-  patch '/edit' => 'recipes#update'
+  patch '/edit-ingredient' => 'ingredients#update'
   delete '/delete' => 'ingredients#destroy'
   resources :users
 
