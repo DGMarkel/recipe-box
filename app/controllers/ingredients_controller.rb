@@ -9,7 +9,7 @@ class IngredientsController < ApiController
   end
 
   def destroy
-    ingredient = Ingredient.find_by(food_name: ingredient_params[:ingredient_data][:food_name], recipe_id: ingredient_params[:id])
+    ingredient = Ingredient.find_by(food_name: ingredient_params[:ingredient_data][:food_name], recipe_id: ingredient_params[:recipeID])
     ingredient.destroy
   end
 
