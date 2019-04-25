@@ -48,7 +48,25 @@ class RecipesController < ApiController
         :id,
         :title,
         :description,
-        :image_url
+        :image_url,
+        ingredients: [
+          :food_name,
+          :serving_qty,
+          :serving_unit,
+          :calories,
+          :cholesterol,
+          :dietary_fiber,
+          :food_name,
+          :potassium,
+          :protein,
+          :saturated_fat,
+          :serving_qty,
+          :serving_unit,
+          :sodium,
+          :sugars,
+          :total_carbohydrate,
+          :total_fat
+        ]
       )
     end
 
