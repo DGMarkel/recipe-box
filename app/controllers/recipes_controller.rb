@@ -30,6 +30,7 @@ class RecipesController < ApiController
   def update
     recipe = Recipe.find(recipe_params[:id])
     if recipe.update(title: recipe_params[:title], description: recipe_params[:description], image_url: recipe_params[:image_url])
+      recipe.ingredients.create(recipe_params[:ingredients])
       render json: {
       message: 'ok',
       recipe: recipe
