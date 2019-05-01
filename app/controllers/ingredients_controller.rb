@@ -1,5 +1,5 @@
 class IngredientsController < ApiController
-  before_action :require_login
+  before_action :require_login, only: [:update, :destroy]
 
   def update
     recipe_id = Recipe.find(ingredient_params[:recipeID])
@@ -9,8 +9,9 @@ class IngredientsController < ApiController
   end
 
   def search
-    recipe_id = Ingredient.where("food_name like ?", "%soy%").each { |ingredient| ingredient.recipe.id }
-    render json: recipe_id 
+    recipes = []
+    Ingredient.where("food_name like ?", "%#{ingredient_params[:search_term]}%").each { |ingredient| recipes.push(ingredient.recipe) }
+    render json: recipes
   end
 
   def destroy
@@ -22,6 +23,7 @@ class IngredientsController < ApiController
 
     def ingredient_params
       params.require(:ingredient).permit(
+        :search_term,
         :recipeID,
         :ingredient_data => {}
       )
