@@ -67,7 +67,8 @@ class RecipesController < ApiController
           :sugars,
           :total_carbohydrate,
           :total_fat
-        ]
+        ],
+        :servings
       )
     end
 
