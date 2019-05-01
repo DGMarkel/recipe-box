@@ -21,4 +21,7 @@ class Recipe < ApplicationRecord
     recipe_totals
   end
 
+  def nutritional_data_per_serving
+  end
+
 end
