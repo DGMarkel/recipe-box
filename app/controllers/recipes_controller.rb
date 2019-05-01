@@ -50,6 +50,7 @@ class RecipesController < ApiController
         :title,
         :description,
         :image_url,
+        :servings
         ingredients: [
           :food_name,
           :serving_qty,
@@ -68,7 +69,6 @@ class RecipesController < ApiController
           :total_carbohydrate,
           :total_fat
         ],
-        :servings
       )
     end
 

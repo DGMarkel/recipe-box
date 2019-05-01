@@ -22,6 +22,7 @@ class Recipe < ApplicationRecord
   end
 
   def nutritional_data_per_serving
+    serving_data = recipe_totals.map { |key, value| recipe_totals[key] = value/self.servings }
   end
 
 end
