@@ -50,7 +50,7 @@ class RecipesController < ApiController
         :title,
         :description,
         :image_url,
-        :servings
+        :servings,
         ingredients: [
           :food_name,
           :serving_qty,
