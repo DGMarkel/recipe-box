@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Recipe Box is a nutritional tracker geared specifically towards home cooks who like to write their own recipes and experiment with others. It's a React/Redux app with a Rails backend.  It relies on Nutritionix’ natural language API for its nutritional data.
 
-Things you may want to cover:
+To get started:
 
-* Ruby version
+Fork and clone Recipe Box
+https://github.com/DGMarkel/recipe-box
 
-* System dependencies
+Recipe Box' Rails backend runs on Ruby v.2.6.1 and runs on port 3001
 
-* Configuration
+For the backend:
 
-* Database creation
+run bundle install
+run rake db: migrate
 
-* Database initialization
+The frontend runs on port 3000:
 
-* How to run the test suite
+run npm install
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To get the servers started:
+run foreman start -p 3000
