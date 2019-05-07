@@ -12,7 +12,7 @@ class RecipesController < ApiController
   end
 
   def create
-    recipe = Recipe.new(title: recipe_params[:title], description: recipe_params[:description], image_url: recipe_params[:image_url])
+    recipe = Recipe.new(title: recipe_params[:title], description: recipe_params[:description], image_url: recipe_params[:image_url], servings: recipe_params[:servings])
     recipe.user = current_user
     if recipe.save
       recipe.ingredients.create(recipe_params[:ingredients])
@@ -29,7 +29,7 @@ class RecipesController < ApiController
 
   def update
     recipe = Recipe.find(recipe_params[:id])
-    if recipe.update(title: recipe_params[:title], description: recipe_params[:description], image_url: recipe_params[:image_url])
+    if recipe.update(title: recipe_params[:title], description: recipe_params[:description], image_url: recipe_params[:image_url], servings: recipe_params[:servings])
       recipe.ingredients.create(recipe_params[:ingredients])
       render json: {
       message: 'ok',
@@ -50,6 +50,7 @@ class RecipesController < ApiController
         :title,
         :description,
         :image_url,
+        :servings,
         ingredients: [
           :food_name,
           :serving_qty,
