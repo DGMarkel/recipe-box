@@ -5,7 +5,7 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :ingredients, allow_destroy: true
 
   def creator_name
-    user.name
+    user.username
   end
 
 
