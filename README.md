@@ -10,6 +10,8 @@ Prerequisites:
   Ruby v.2.6.1 or higher
   Locally installed gem Foreman
     To install: bundle install Foreman
+  Nutritionix API account (free)
+    Sign up at https://developer.nutritionix.com/    
 
 Fork and clone Recipe Box
 https://github.com/DGMarkel/recipe-box
@@ -19,6 +21,15 @@ https://github.com/DGMarkel/recipe-box-client
 
 Next, cd into recipe-box-client and run npm install
 
-Once the dependencies are installed, cd into recipe-box and run foreman start -p 3000.
+You'll need an App ID and key in order to fetch nutritional data from the Nutritionix API that Recipe Box relies on.  You can set up a free account at https://developer.nutritionix.com/.
+
+Once you've set up your account and have your app id and key, create a .env file to store them in.  The .env file should look something like this:
+
+REACT_APP_NUTRITIONIX_APP_ID=app_id
+REACT_APP_NUTRITIONIX_KEY=key
+
+Finally, add .env to .gitignore to prevent sensitive info from being shared to github.
+
+cd into recipe-box and run foreman start -p 3000.
 
 Foreman will automatically run bundler, servers for the frontend and backend, and load the site in browser.
