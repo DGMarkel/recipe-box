@@ -9,7 +9,9 @@ To get started:
 Prerequisites:
   Ruby v.2.6.1 or higher
   Locally installed gem Foreman
-    To install: bundle install Foreman
+    To install:
+      gem install Foreman
+      bundle install
   Nutritionix API account (free)
     Sign up at https://developer.nutritionix.com/    
 
