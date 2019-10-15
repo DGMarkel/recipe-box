@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_05_07_233855) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "ingredients", force: :cascade do |t|
     t.string "food_name"
     t.string "brand_name"
@@ -30,14 +33,14 @@ ActiveRecord::Schema.define(version: 2019_05_07_233855) do
     t.float "potassium"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "recipe_id"
+    t.bigint "recipe_id"
     t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
   end
 
   create_table "recipes", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "image_url"
     t.integer "servings"
     t.index ["user_id"], name: "index_recipes_on_user_id"
@@ -53,4 +56,6 @@ ActiveRecord::Schema.define(version: 2019_05_07_233855) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "ingredients", "recipes"
+  add_foreign_key "recipes", "users"
 end
